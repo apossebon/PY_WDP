@@ -1,0 +1,38 @@
+{
+    "build": {      
+      "context": "../..",
+      "dockerfile": "dockerfile",
+      "target": "development"
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "hbenl.vscode-test-explorer",
+          "littlefoxteam.vscode-python-test-adapter"
+        ],
+        "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash"
+        }
+      }
+    },    
+    "mounts": [
+      {
+        "source": "${localWorkspaceFolder}/",
+        "target": "/app/",
+        "type": "bind"
+      },      
+      {
+        "source": "${localWorkspaceFolder}/.devcontainer/task_extract",
+        "target": "/app/.devcontainer/task_extract",
+        "type": "bind"
+      }
+      
+    ],
+    "name": "task_extract",
+    //"postCreateCommand": "uv sync",
+    "workspaceFolder": "/app"
+  }
+   
+   

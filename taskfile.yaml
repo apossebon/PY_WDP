@@ -1,9 +1,15 @@
-version: "2.0.0"
+version: '3'
+
 tasks:
-  - label: "echo"
-    type: "shell"
-    command: "echo Hello, World!"
-    group:
-      kind: "build"
-      isDefault: true
-    problemMatcher: []
+  build:
+    desc: "Build the Docker image"
+    cmds:
+      - docker buildx build \
+        --platform=linux/arm64 \
+        -t artifactory.aws.wiley.com/docker-local/gigahorse/pipelines/tasks/extract/api/weather_extract:0.0.0 \
+        -f  .devcontainer/task_extract/dockerfile \
+        --load .
+  push:
+    desc: "Push the Docker image to Artifactory"
+    cmds:
+      - docker push artifactory.aws.wiley.com/docker-local/gigahorse/pipelines/tasks/extract/api/weather_extract:0.0.0

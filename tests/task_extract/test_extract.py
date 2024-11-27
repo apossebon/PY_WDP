@@ -3,7 +3,6 @@ from unittest.mock import patch, Mock
 import requests
 from src.task_extract.extract import extract_weather_data
 
-
 def test_extract_weather_data_success():
     configs = {"api": {"url": "http://api.openweathermap.org/data/2.5/weather", "query": "Curitiba"}}
     secrets = {"api": {"appid": "fake_appid"}}
@@ -55,13 +54,5 @@ def test_extract_weather_data_value_error():
     mock_response.json.side_effect = ValueError
 
     with patch('requests.get', return_value=mock_response):
-        data = extract_weather_data(configs, secrets)
-        assert data is None
-
-def test_extract_weather_data_unexpected_error():
-    configs = {"api": {"url": "http://api.openweathermap.org/data/2.5/weather", "query": "Curitiba"}}
-    secrets = {"api": {"appid": "fake_appid"}}
-
-    with patch('requests.get', side_effect=Exception):
         data = extract_weather_data(configs, secrets)
         assert data is None

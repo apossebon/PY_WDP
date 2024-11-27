@@ -1,16 +1,11 @@
-[tool.poetry]
+[project]
 name = "py-wdp-001"
 version = "0.1.0"
-description = ""
-authors = ["Alysson Possebon <apossebon@wiley.com>"]
+description = "Add your description here"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-requests = "^2.32.3"
-pytest = "^8.3.3"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest>=8.3.3",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.3",
+]

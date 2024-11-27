@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch, Mock
+import requests
 from src.task_extract.extract import extract_weather_data
-
 
 
 def test_extract_weather_data_success():
